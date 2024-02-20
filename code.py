@@ -1,3 +1,5 @@
+print("Starting")
+
 import board
 
 from kmk.modules.layers import Layers
@@ -11,7 +13,7 @@ from kmk.extensions.media_keys import MediaKeys
 from kmk.modules.mouse_keys import MouseKeys
 
 class MyKeyboard(KMKKeyboard):
-    def _init_(self):
+    def __init__(self):
 
         encoder = RotaryioEncoder(
             pin_a=board.GP14,
@@ -41,7 +43,7 @@ class MyKeyboard(KMKKeyboard):
 
 keyboard = MyKeyboard()
 keyboard.extensions.append(MediaKeys())
-keyboard.modules.append(Layers())
+keyboard.modules.append(Layers()) 
 keyboard.modules.append(MouseKeys())
 
 encoder_map_l0 = [KC.MW_UP, KC.MW_DOWN]
@@ -57,5 +59,5 @@ keyboard.keymap = [(matrix_map_l0 + single_key_map_l0 + encoder_map_l0),
                    (matrix_map_l1 + single_key_map_l1 + encoder_map_l1)]
 
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     keyboard.go()
